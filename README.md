@@ -9,6 +9,3 @@ This is my first serious project, it is supposed to aid anyone who is learning M
 - Optimise pygame by only updating part of the screen
 
 
-# Some Screenshots:
-
-![Alt text](/IsaacWP121/Morse-Code/tree/Screenshots/Screen1.png?raw=true "Screen 1")
