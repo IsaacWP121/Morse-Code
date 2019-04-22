@@ -4,14 +4,15 @@ from winsound import Beep
 from roundrects import aa_round_rect
 from random import choice
 
-pygame.init() 
-icon = pygame.image.load("C:\\Users\\IsaacP\\Desktop\\Python\\Python Projects\\Morse Code (NEW)\\Experimental Code\\WINDOWS\\Icon.jpg")
+pygame.init()
+icon = pygame.image.load(# Icon path)
 pygame.display.set_icon(icon)
 pygame.display.set_caption("Morse Code")
 window_h = 725
 window_w = 1300
 window = pygame.display.set_mode((window_w, window_h))
 morse_keystrokes = [] # this empty list will be used to log and store the short and long beeps
+button_text = "Default"
 cheatsheettext = ["A ._", ",", "B _...", ",", "C _._.", ",",
                   "D _..", ",", "E .", ",", "F .._.", ",", "G __.",
                   ",", "H ....", ",", "I ..", ",", "J . ___", ",", "K _._", ",",
@@ -20,13 +21,13 @@ cheatsheettext = ["A ._", ",", "B _...", ",", "C _._.", ",",
                   "R ._.", ",", "S ...", ",", "T _", ",", "U .._", ",", "V ..._",
                   ",", "W .__", ",", "X _.._", ",", "Y _.__", ",", "Z __..",
                   ",", "", "", "", "", ",", "1 .____", ",", "2 ..___",
-                  ",", "3 ...__", ",", "4 ...._", ",", "5 .....", ",", "6 _ ....", ",",
+                  ",", "3 ...__", ",", "4 ...._", ",", "5 .....", ",", "6 _....", ",",
                   "7 __...", ",", " 8 ___..", ",", "9 ____.", ",", "0 _____"]
 checking_dict = {'A': '._', 'B': '_...', 'C': '_._.', 'D': '_..', 'E': '.', 'F': '.._.', 
                 'G': '__.', 'H': '....', 'I': '..', 'J': '.', 'K': '_._', 'L': '._..', 'M': '__', 'N': '_.', 
                 'O': '___', 'P': '._._', 'Q': '__._', 'R': '._.', 'S': '...', 'T': '_', 'U': '.._', 'V': '..._', 
                 'W': '.__', 'X': '_.._', 'Y': '_.__', 'Z': '__..', '1': '.____', '2': '..___', '3': '...__', 
-                '4': '...._', '5': '.....', '6': '_', '7': '__...', '': '8', '9': '____.'}
+                '4': '...._', '5': '.....', '6': '_....', '7': '__...', '': '8', '9': '____.'}
 characters = [" ", "a", "A", "b", "B", "c", "C", "d", "D", "e", "E", "f", "F", "g", "G", "h", "H", "i", "I", "j", "J", "k", "K", 
              "l", "L", "m", "M", "n", "N", "o", "O", "p", "P", "q", "Q", "r", "R", "s", "S", "t", "T", "u", "U", "v", "V", "w",
              "W", "x", "X", "y", "Y", "z", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
@@ -164,8 +165,8 @@ def check_word(text, string):
     word = list(text)
     broken_morse_word = []
     if " " in string:
-    	for i in range(string.count(" ")):
-        	string.remove(" ")
+        for i in range(string.count(" ")):
+                string.remove(" ")
     else:
         print("Next time try using a space.")
 
@@ -352,8 +353,14 @@ class Label: # this class is quite simple it renders, centers and draws any give
 
 def main_screen(Word, Mode=None):
     window.fill(Color("grey97"))
-    dit = Button(20, 40, 450, 250, Color("grey80"), 2, True, "Dit", custom_font(70))
-    da = Button(20, 370, 450, 250, Color("grey80"), 2, True, "Da", custom_font(70))
+    if button_text != "Default":
+        b1_text, b_font_size = ".", custom_font(90)
+        b2_text = "_"
+    else:
+        b1_text, b_font_size = "Dit", custom_font(70)
+        b2_text= "Da"
+    b1 = Button(20, 40, 450, 250, Color("grey80"), 2, True, b1_text, b_font_size)
+    b2 = Button(20, 370, 450, 250, Color("grey80"), 2, True, b2_text, b_font_size)
     space = Button(180, 305, 130, 50, Color("grey80"), 2, False, "Space", custom_font(30))
     first_box = Morse_Box(150, 670, 1000, 55, Color("grey80"), Color("grey73"), 2)
     Your_Word = Label("Your word is:", 675, 310, 0, 0, custom_font(60))
@@ -364,8 +371,14 @@ def main_screen(Word, Mode=None):
 
     def tab_open(Word, Mode=Mode):
         window.fill(Color("grey97"))
-        dit = Button(20, 40, 450, 250, Color("grey80"), 2, True, "Dit", custom_font(70))
-        da = Button(20, 370, 450, 250, Color("grey80"), 2, True, "Da", custom_font(70))
+        if button_text != "Default":
+            b1_text, b_font_size = ".", custom_font(90)
+            b2_text = "_"
+        else:
+            b1_text, b_font_size = "Dit", custom_font(70)
+            b2_text= "Da"
+        b1 = Button(20, 40, 450, 250, Color("grey80"), 2, True, b1_text, b_font_size)
+        b2 = Button(20, 370, 450, 250, Color("grey80"), 2, True, b2_text, b_font_size)
         space = Button(180, 305, 130, 50, Color("grey80"), 2, False, "Space", custom_font(30))
         first_box = Morse_Box(150, 670, 1000, 55, Color("grey80"), Color("grey73"), 2)
         Your_Word = Label("Your word is:", 675, 310, 0, 0, custom_font(60))
@@ -392,9 +405,9 @@ def main_screen(Word, Mode=None):
                 if event.type == pygame.QUIT:
                     quit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    if dit.clicked():
+                    if b1.clicked():
                         play_beep(1, first_box)
-                    elif da.clicked():
+                    elif b2.clicked():
                         play_beep(2, first_box)
                     elif first_box.clicked():
                         global morse_keystrokes
@@ -407,7 +420,7 @@ def main_screen(Word, Mode=None):
                         morse_keystrokes = []
                         first_menu()
                     elif space.clicked():
-                    	morse_keystrokes.append(" ")
+                        morse_keystrokes.append(" ")
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_BACKSPACE:
                         morse_keystrokes = morse_keystrokes[:-1]
@@ -424,13 +437,13 @@ def main_screen(Word, Mode=None):
                         else:
                             main_screen(choice(samplewords))
                     elif event.unicode == ".":
-                    	play_beep(1, first_box)
+                        play_beep(1, first_box)
                     elif event.unicode == ",":
-                    	play_beep(1, first_box)
+                        play_beep(1, first_box)
                     elif event.unicode == "_":
-                    	play_beep(2, first_box)
+                        play_beep(2, first_box)
                     elif event.unicode == "-":
-                    	play_beep(2, first_box)
+                        play_beep(2, first_box)
                     elif event.unicode == " ":
                         morse_keystrokes.append(" ")
 
@@ -439,9 +452,9 @@ def main_screen(Word, Mode=None):
             if event.type == pygame.QUIT:
                 quit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if dit.clicked():
+                if b1.clicked():
                     play_beep(1, first_box)
-                elif da.clicked():
+                elif b2.clicked():
                     play_beep(2, first_box)
                 elif first_box.clicked():
                     global morse_keystrokes
@@ -471,20 +484,31 @@ def main_screen(Word, Mode=None):
                     else:
                         main_screen(choice(samplewords))
                 elif event.unicode == ".":
-                	play_beep(1, first_box)
+                    play_beep(1, first_box)
                 elif event.unicode == ",":
-                	play_beep(1, first_box)
+                    play_beep(1, first_box)
                 elif event.unicode == "_":
-                	play_beep(2, first_box)
+                    play_beep(2, first_box)
                 elif event.unicode == "-":
-                	play_beep(2, first_box)
+                    play_beep(2, first_box)
+                elif event.unicode == "=":
+                    play_beep(2, first_box)
+                elif event.unicode == "+":
+                    play_beep(2, first_box)
                 elif event.unicode == " ":
                     morse_keystrokes.append(" ")
 
 def choose_word(Typing_Strokes):
     window.fill(Color("grey97"))
-    dit = Button(20, 40, 450, 250, Color("grey80"), 2, True, "Dit", custom_font(70))
-    da = Button(20, 370, 450, 250, Color("grey80"), 2, True, "Da", custom_font(70))
+    if button_text != "Default":
+        b1_text, b_font_size = ".", custom_font(90)
+        b2_text = "_"
+    else:
+        b1_text, b_font_size = "Dit", custom_font(70)
+        b2_text= "Da"
+
+    b1 = Button(20, 40, 450, 250, Color("grey80"), 2, True, b1_text, b_font_size)
+    b2 = Button(20, 370, 450, 250, Color("grey80"), 2, True, b2_text, b_font_size)
     Your_Word = Label("Your word is:", 675, 310, 0, 0, custom_font(60))
     input_box = Typing_Box(500, 350, 350, 50, Color("black"), Color("blue"))
     back = Button(-2, 677, 80, 50, Color("grey80"), 2, False, "Back", custom_font(30))
@@ -493,8 +517,15 @@ def choose_word(Typing_Strokes):
 
     def tab_open(Typing_Strokes):
         window.fill(Color("grey97"))
-        dit = Button(20, 40, 450, 250, Color("grey80"), 2, True, "Dit", custom_font(70))
-        da = Button(20, 370, 450, 250, Color("grey80"), 2, True, "Da", custom_font(70))
+        if button_text != "Default":
+            b1_text, b_font_size = ".", custom_font(90)
+            b2_text = "_"
+        else:
+            b1_text, b_font_size = "Dit", custom_font(70)
+            b2_text= "Da"
+
+        b1 = Button(20, 40, 450, 250, Color("grey80"), 2, True, b1_text, b_font_size)
+        b2 = Button(20, 370, 450, 250, Color("grey80"), 2, True, b2_text, b_font_size)
         Your_Word = Label("Your word is:", 675, 310, 0, 0, custom_font(60))
         input_box = Typing_Box(525, 350, 300, 50, Color("black"), Color("blue"))
         back = Button(-2, 677, 80, 50, Color("grey80"), 2, False, "Back", custom_font(30))
@@ -569,12 +600,40 @@ def choose_word(Typing_Strokes):
                         if event.unicode in characters:
                             input_box.text += event.unicode
                         input_box.update()
+
+def Settings_Menu():
+    window.fill(Color("grey97"))
+    Deviding_Line = pygame.draw.line(window, pygame.Color("black"), (350, 50), (350, 675), 2)
+    button_text_label = Label("Button Text", 175, 125, 0, 0, custom_font(45))
+    button_text_button1 = Button(375, 75, 170, 100, Color("grey80"), border=1, round=True, text="Default", Font=custom_font(30))
+    button_text_button2 = Button(625, 75, 170, 100, Color("grey80"), border=1, round=True, text="Option 1", Font=custom_font(30))
+    theme_label = Label("Theme", 175, 300, 0, 0, custom_font(45))
+    back = Button(-2, 677, 80, 50, Color("grey80"), 2, False, "Back", custom_font(30))
+    theme_button1 = Button(375, 255, 170, 100, Color("grey80"), border=1, round=True, text="Default", Font=custom_font(30))
+    theme_button2 = Button(625, 255, 170, 100, Color("grey80"), border=1, round=True, text="Dark", Font=custom_font(30))
+    run = True
+    while run:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                quit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if button_text_button1.clicked():
+                    print("Dit-Da")
+                    button_text = "Default"
+                elif button_text_button2.clicked():
+                    print("_.")
+                    button_text = "Option 1"
+                elif back.clicked():
+                    run = not run
+                    first_menu()
+
                     
 def first_menu():
     window.fill(Color("grey97"))
     prompt = Label("Would you like a word generated for you?", window_w/2, 150, 0, 0, custom_font(50))
     yes = Button(150, 300, 400, 225, Color("grey80"), 1, True, "Yes")
     no = Button(750, 300, 400, 225, Color("grey80"), 1, True, "No")
+    setting = Button(1127, 677, 175, 50, Color("grey80"), 1, False, "Settings", Font=custom_font(20))
     run = True
     while run:
         for event in pygame.event.get():
@@ -588,7 +647,10 @@ def first_menu():
                 elif no.clicked():
                     run = not run
                     chose_own = True
-                    choose_word("")              
+                    choose_word("")
+                elif setting.clicked():
+                    run = not run
+                    Settings_Menu()
 
 if __name__ == "__main__":
     first_menu()
