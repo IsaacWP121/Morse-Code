@@ -12,3 +12,13 @@ This is my first serious project, it is supposed to aid anyone who is learning M
 # Some Screenshots:
 
 ![Screen 1](https://github.com/IsaacWP121/Morse-Code/blob/Screenshots/Screen1.png?raw=true)
+
+![Screen 1](https://github.com/IsaacWP121/Morse-Code/blob/Screenshots/Screen2.png?raw=true)
+
+![Screen 1](https://github.com/IsaacWP121/Morse-Code/blob/Screenshots/Screen3.png?raw=true)
+
+![Screen 1](https://github.com/IsaacWP121/Morse-Code/blob/Screenshots/Screen4.png?raw=true)
+
+![Screen 1](https://github.com/IsaacWP121/Morse-Code/blob/Screenshots/Screen5.png?raw=true)
+
+![Screen 1](https://github.com/IsaacWP121/Morse-Code/blob/Screenshots/Screen6.png?raw=true)
