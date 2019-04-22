@@ -7,3 +7,8 @@ This is my first serious project, it is supposed to aid anyone who is learning M
 - Make Play Back Beep
 - Redesign the first menu to include a multiplayer/messager mode
 - Optimise pygame by only updating part of the screen
+
+
+# Some Screenshots:
+
+![Alt text](/IsaacWP121/Morse-Code/tree/Screenshots/Screen1.png?raw=true "Screen 1")
