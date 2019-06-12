@@ -4,8 +4,8 @@ from winsound import Beep
 from roundrects import aa_round_rect
 from random import choice
 
-pygame.init()
-icon = pygame.image.load(# Icon path)
+pygame.init() 
+icon = pygame.image.load("C:\\Users\\Salina\\Desktop\\Python\\Python Projects\\Morse Code (NEW)\\Experimental Code\\WINDOWS\\Icon.jpg")
 pygame.display.set_icon(icon)
 pygame.display.set_caption("Morse Code")
 window_h = 725
@@ -601,39 +601,12 @@ def choose_word(Typing_Strokes):
                             input_box.text += event.unicode
                         input_box.update()
 
-def Settings_Menu():
-    window.fill(Color("grey97"))
-    Deviding_Line = pygame.draw.line(window, pygame.Color("black"), (350, 50), (350, 675), 2)
-    button_text_label = Label("Button Text", 175, 125, 0, 0, custom_font(45))
-    button_text_button1 = Button(375, 75, 170, 100, Color("grey80"), border=1, round=True, text="Default", Font=custom_font(30))
-    button_text_button2 = Button(625, 75, 170, 100, Color("grey80"), border=1, round=True, text="Option 1", Font=custom_font(30))
-    theme_label = Label("Theme", 175, 300, 0, 0, custom_font(45))
-    back = Button(-2, 677, 80, 50, Color("grey80"), 2, False, "Back", custom_font(30))
-    theme_button1 = Button(375, 255, 170, 100, Color("grey80"), border=1, round=True, text="Default", Font=custom_font(30))
-    theme_button2 = Button(625, 255, 170, 100, Color("grey80"), border=1, round=True, text="Dark", Font=custom_font(30))
-    run = True
-    while run:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                quit()
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if button_text_button1.clicked():
-                    print("Dit-Da")
-                    button_text = "Default"
-                elif button_text_button2.clicked():
-                    print("_.")
-                    button_text = "Option 1"
-                elif back.clicked():
-                    run = not run
-                    first_menu()
 
-                    
 def first_menu():
     window.fill(Color("grey97"))
     prompt = Label("Would you like a word generated for you?", window_w/2, 150, 0, 0, custom_font(50))
     yes = Button(150, 300, 400, 225, Color("grey80"), 1, True, "Yes")
     no = Button(750, 300, 400, 225, Color("grey80"), 1, True, "No")
-    setting = Button(1127, 677, 175, 50, Color("grey80"), 1, False, "Settings", Font=custom_font(20))
     run = True
     while run:
         for event in pygame.event.get():
@@ -648,9 +621,7 @@ def first_menu():
                     run = not run
                     chose_own = True
                     choose_word("")
-                elif setting.clicked():
-                    run = not run
-                    Settings_Menu()
+                
 
 if __name__ == "__main__":
     first_menu()
