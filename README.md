@@ -5,7 +5,6 @@ This is my first serious project, it is supposed to aid anyone who is learning M
 # To Do:
 - Make Hold delete
 - Make Play Back Beep
-- Redesign the first menu to include a multiplayer/messager mode
 - Optimise pygame by only updating part of the screen
 
 
