@@ -5,8 +5,6 @@ from roundrects import aa_round_rect
 from random import choice
 
 pygame.init() 
-icon = pygame.image.load("")
-pygame.display.set_icon(icon)
 pygame.display.set_caption("Morse Code")
 window_h = 725
 window_w = 1300
