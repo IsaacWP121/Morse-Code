@@ -1,5 +1,6 @@
 # Morse-Code
 This is my first serious project, it is supposed to aid anyone who is learning Morse code. I came up with this idea when my class got told to stop talking and me and my friend resorted to a broken Morse code conversation.
+It could use a reprogram and a fresh touch of paint, I've learnt a lot since making this but I think it's good to have something to compare back to
 
 
 # To Do:
